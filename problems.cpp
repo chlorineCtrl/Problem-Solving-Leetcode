@@ -26,6 +26,7 @@ public:
         return count;
     }
 };
+
 //https://leetcode.com/problems/longest-common-prefix/
 class Solution {
 public:
@@ -44,3 +45,30 @@ public:
         return sum;
     }
 };
+
+//https://leetcode.com/problems/valid-parentheses/
+
+class Solution {
+public:
+    bool isValid(string s) {
+        int n = s.size();
+
+        string st;
+
+        map<char, int> mp;
+        mp['('] = ')';
+        mp['{'] = '}';
+        mp['['] = ']';
+        st.push_back(s[0]);
+        for(int i = 1; i < n; i++){
+            if(mp[st.back()] == s[i])
+            {
+                st.pop_back();
+            }
+            else st.push_back(s[i]);
+        }
+        return st.size() > 0 ? 0 : 1;
+    }
+};
+
+
