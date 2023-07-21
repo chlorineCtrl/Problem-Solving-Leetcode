@@ -26,3 +26,21 @@ public:
         return count;
     }
 };
+//https://leetcode.com/problems/longest-common-prefix/
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string sum = "";
+        sort(strs.begin(), strs.end());
+        string firstString = strs[0];
+        string lastString = strs[strs.size()-1];
+        for(int i = 0; i < firstString.size(); i++){
+            if(firstString[i] == lastString[i]){
+                sum  += firstString[i];
+            }
+            else break;
+        }
+
+        return sum;
+    }
+};
