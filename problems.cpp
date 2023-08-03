@@ -188,3 +188,19 @@ public:
         return myLogic(leftn->left, rightn->right) &&  myLogic(leftn->right, rightn->left);
     }
 };
+
+//https://leetcode.com/problems/maximum-depth-of-binary-tree/
+
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(root == NULL) return 0;
+        int left = maxDepth(root->left)+1;
+        int right = maxDepth(root->right)+1;
+
+        return max(right,left);
+
+    }
+
+   
+};
