@@ -171,3 +171,20 @@ public:
 }
 
 };
+
+//https://leetcode.com/problems/symmetric-tree/
+
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+
+        return myLogic(root->left, root->right);
+    }
+
+    bool myLogic(TreeNode* leftn, TreeNode* rightn){
+        if(leftn == nullptr && rightn == nullptr) return true;
+        if(leftn == nullptr || rightn == nullptr || leftn->val != rightn->val) return false;
+
+        return myLogic(leftn->left, rightn->right) &&  myLogic(leftn->right, rightn->left);
+    }
+};
