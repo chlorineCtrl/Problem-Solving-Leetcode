@@ -280,5 +280,54 @@ public:
     }
 };
 
+//https://leetcode.com/problems/palindrome-linked-list/
+
+class Solution {
+public:
+    struct ListNode* copy(struct ListNode* start1)
+
+    {
+
+        if (start1 == NULL)
+            return NULL;
+
+        struct ListNode* temp =
+            (struct ListNode*)malloc(sizeof(struct ListNode));
+
+        temp->val = start1->val;
+
+        temp->next = copy(start1->next);
+
+        return temp;
+    }
+
+    bool areIdentical(struct ListNode* a, struct ListNode* b) {
+        while (a != NULL && b != NULL) {
+            if (a->val != b->val)
+                return false;
+
+            a = a->next;
+            b = b->next;
+        }
+
+        return (a == NULL && b == NULL);
+    }
+    bool isPalindrome(ListNode* head) {
+        ListNode* pastHead = copy(head);
+        ListNode* temp1 = NULL;
+        ListNode* temp2;
+        while (head) {
+            temp2 = head->next;
+            head->next = temp1;
+            temp1 = head;
+            head = temp2;
+        }
+        if (areIdentical(pastHead, temp1))
+            return true;
+        else
+            return false;
+    }
+};
+
 
 
