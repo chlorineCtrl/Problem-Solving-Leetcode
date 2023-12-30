@@ -390,5 +390,24 @@ public:
     }
 };
 
+//https://leetcode.com/problems/group-anagrams/
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> ans;
+        for(auto x:strs){
+            string temp = x;
+            sort(temp.begin(),temp.end());
+            ans[temp].push_back(x);
+        }
+        vector<vector<string>> final_ans;
+        for(auto y:ans){
+            final_ans.push_back(y.second);
+        }
+        return final_ans;
+    }
+};
+
 
 
