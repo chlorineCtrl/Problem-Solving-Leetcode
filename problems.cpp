@@ -366,6 +366,29 @@ public:
     }
 };
 
+//https://leetcode.com/problems/valid-anagram/
+
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        bool verdict = true;
+        unordered_map<char, int> ans;
+
+        for (auto x : s) {
+            ans[x]++;
+        }
+        for (auto x : t) {
+            ans[x]--;
+        }
+        for (auto x : ans) {
+            if (x.second != 0) {
+                verdict = false;
+            }
+        }
+        return verdict;
+    }
+};
 
 
 
