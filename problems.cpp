@@ -409,5 +409,29 @@ public:
     }
 };
 
+//https://leetcode.com/problems/top-k-frequent-elements/
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> freq;
+        priority_queue<pair<int,int>> pq;
+        vector<int> ans;
+
+        for (auto x : nums) {
+            freq[x]++;
+        }
+
+        for(auto y:freq){
+            pq.push({y.second,y.first});
+        }
+
+        while(k--){
+            ans.push_back(pq.top().second);
+            pq.pop();
+        }
+        return ans;
+    }
+};
 
 
