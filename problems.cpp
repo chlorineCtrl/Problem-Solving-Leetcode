@@ -434,4 +434,34 @@ public:
     }
 };
 
+//https://leetcode.com/problems/is-subsequence/
+
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int m = s.length();
+        int n = t.length();
+
+        return ChodseAmare(s,t,m,n);
+    }
+
+    bool ChodseAmare(string s, string t,int m,int n) {
+
+            if(m==0){
+                return true;
+            }
+            else if(n==0){
+                return false;
+            }
+
+            if(s[m-1] == t[n-1]){
+                return ChodseAmare(s,t,m-1,n-1);
+            }
+
+            else {
+                return ChodseAmare(s,t,m,n-1);
+            }
+    }
+};
+
 
