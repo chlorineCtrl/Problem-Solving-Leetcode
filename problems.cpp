@@ -464,4 +464,89 @@ public:
     }
 };
 
+//Concatenation of Array
+
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        vector<int> v;
+      for(int i = 0 ; i < 2; i++){
+          for(int j = 0;  j < nums.size(); j++){
+              v.push_back(nums[j]);
+          }
+      } 
+      return v; 
+    }
+};
+
+//Richest Customer Wealth
+
+class Solution {
+public:
+    int maximumWealth(vector<vector<int>>& v) {
+        int sum = 0;
+        int smax = 0;
+
+        vector<vector<int>>::iterator it1;
+        vector<int>::iterator it2;
+        for (int i = 0; i < v.size(); i++) {
+            for (int j = 0; j < v[i].size(); j++) {
+                sum += v[i][j];
+            }
+            smax = max(smax,sum);
+            sum = 0 ;
+        }
+        return smax;
+    }
+};
+
+//Count Items Matching a Rule
+
+class Solution {
+public:
+    int countMatches(vector<vector<string>>& items, string ruleKey, string ruleValue) {
+        int ans = 0;
+        for(int i = 0; i < items.size(); i++){
+            if(ruleKey=="color" && items[i][1]== ruleValue) ans++;
+            else if(ruleKey=="type" && items[i][0]==ruleValue) ans++;
+            else if(ruleKey=="name" && items[i][2]==ruleValue) ans++;
+            
+        }
+        return ans;
+    }
+};
+
+//Find the Middle Index in Array
+
+class Solution {
+public:
+    int findMiddleIndex(vector<int>& nums) {
+        int left_sum = 0;
+        int right_sum = 0;
+        int retur = -4;
+
+        for (int i = 0; i < nums.size(); i++) {
+            for (int x = 0; x < i; x++) {
+                left_sum += nums[x];
+                
+            }
+            for (int y = i + 1; y < nums.size(); y++) {
+                right_sum += nums[y];
+                
+            }
+
+            if (left_sum == right_sum){
+retur = i;
+break;
+            }
+                
+
+            left_sum = 0;
+            right_sum = 0;
+        }
+        if(retur == -4) retur = -1;
+        return retur;
+    }
+};
+
 
