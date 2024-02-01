@@ -596,4 +596,27 @@ public:
     }
 };
 
+// https://leetcode.com/problems/shortest-distance-to-a-character/
+
+class Solution {
+public:
+    vector<int> shortestToChar(string s, char c) {
+        vector<int> freq;
+        vector<int> ans;
+        for(int i = 0; i<s.length(); i++){
+            if(s[i] == c){
+                freq.push_back(i);
+            }
+        }
+        for(int i=0; i<s.length();i++){
+            int dist = INT_MAX;
+            for(int j = 0; j<freq.size();j++){
+                dist = min(dist,abs(freq[j] - i));
+            }
+            ans.push_back(dist);
+
+        }
+        return ans;
+    }
+};
 
