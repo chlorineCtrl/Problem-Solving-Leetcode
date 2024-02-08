@@ -637,3 +637,50 @@ public:
     }
 };
 
+//First Unique Character in a String
+
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int retur = -1;
+       unordered_map<char, int> umap; 
+       for(int i = 0; i< s.length(); i++){
+           umap[s[i]]++;
+       }
+       for(int i =0; i<s.length();i++){
+           if(umap[s[i]]==1){
+               retur = i;
+               break;
+           }
+       }
+       return retur;
+    }
+};
+
+//Remove Duplicates from Sorted Array
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int count =0;
+        vector<int>::iterator ip;
+        ip = std::unique(nums.begin(), nums.begin() + nums.size());
+        nums.resize(std::distance(nums.begin(), ip));
+
+        for (ip = nums.begin(); ip != nums.end(); ++ip) {
+            count++;
+        }
+        return count;
+    }
+
+};
+
+//Sort Colors
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+    }
+};
+
