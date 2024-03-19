@@ -684,3 +684,25 @@ public:
     }
 };
 
+//https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
+
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) {
+        int count = 0;
+        for(auto s:sentences){
+            
+            int temp = count;
+            count = 0;
+            for(int i = 0; i<s.length();i++){
+                if(s[i]==' '){
+                    count++;
+                }
+                
+            }
+            count = max(temp,count);
+        }
+        return count+1;
+    }
+};
+
