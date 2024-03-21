@@ -706,3 +706,169 @@ public:
     }
 };
 
+//Find First Palindromic String in the Array
+
+class Solution {
+public:
+    string firstPalindrome(vector<string>& words) {
+        string retur;
+        string no = "";
+        for (auto c : words) {
+            string temp = c;
+            reverse(c.begin(), c.end());
+
+            if (c == temp) {
+                retur = c;
+                return retur;
+            }
+        }
+
+        return no;
+    }
+};
+
+// Truncate Sentence 
+
+class Solution {
+public:
+    string truncateSentence(string s, int k) {
+        int len = 0;
+        int count = 0;
+        
+      
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == ' ') {
+                count++;
+                if (count >= k)
+                    break;
+            }
+            len++;
+        }
+        
+        string a(len, ' ');
+        count = 0;
+        for (int i = 0; i < len; i++) {
+            a[i] = s[i];
+            if (s[i] == ' ')
+                count++;
+            if (count >= k)
+                break;
+        }
+        return a;
+    }
+};
+
+//Check If Two String Arrays are Equivalent
+class Solution {
+public:
+    bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) {
+        string ans1,ans2;
+        for(auto a: word1){
+            ans1 = ans1 + a;
+        }
+        for(auto b: word2){
+            ans2 += b;
+        }
+        if(ans1 == ans2){
+            return true;
+        }
+        return false;
+    }
+};
+
+//Shuffle String
+class Solution {
+public:
+    string restoreString(string s, vector<int>& indices) {
+        string ans(s.length(), ' ');
+        for (int i = 0; i < s.length(); i++) {
+            ans[indices[i]] = s[i]; 
+        }
+        return ans;
+    }
+};
+
+//Minimum Number of Operations to Move All Balls to Each Box
+class Solution {
+public:
+    vector<int> minOperations(string boxes) {
+        int count;
+        vector<int> ans;
+        for (int i = 0; i < boxes.length(); i++) {
+            count = 0;
+            for (int j = 0; j < boxes.length(); j++) {
+                if (i != j && boxes[j] == '1') {
+                    count = count + abs(i - j);
+                }
+            }
+            ans.push_back(count);
+        }
+        return ans;
+    }
+};
+//Number of Laser Beams in a Bank
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) {
+        int res = 0;
+        vector<int> ans;
+        for (auto b : bank) {
+            int count = 0;
+            for (int i = 0; i < b.length(); i++) {
+                if (b[i] == '1') {
+                    count++;
+                }
+            }
+            if (count > 0) {
+                ans.push_back(count);
+            }
+        }
+        if (ans.size() > 1) {
+            for (int i = 0; i < ans.size() - 1; i++) {
+                res = res + (ans[i] * ans[i + 1]);
+            }
+        }
+        else return 0;
+
+        return res;
+    }
+};
+//Maximum Number of Words Found in Sentences
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) {
+        int count = 0;
+        for(auto s:sentences){
+            
+            int temp = count;
+            count = 0;
+            for(int i = 0; i<s.length();i++){
+                if(s[i]==' '){
+                    count++;
+                }
+                
+            }
+            count = max(temp,count);
+        }
+        return count+1;
+    }
+};
+//Find Words Containing Character
+class Solution {
+public:
+    vector<int> findWordsContaining(vector<string>& words, char x) {
+
+        vector<int> ans;
+        char character = x;
+        for (size_t i = 0; i < words.size(); ++i){
+            std::cout << words[i] << std::endl;
+            std::string pattern = std::string(1, character); // converting a single character into a string
+            std::regex regexPattern(pattern);
+
+            if (std::regex_search(words[i], regexPattern)) {
+                ans.push_back(i);
+            }
+        }
+        return ans;
+    }
+};
