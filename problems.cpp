@@ -948,3 +948,36 @@ public:
         return ans;
     }
 };
+
+//https://leetcode.com/problems/3sum/
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        int n = nums.size();
+        vector<vector<int>> ans;
+        for(int i = 0; i < n; i++){
+            int left = i+1;
+            int right = n-1;
+            int target = -nums[i];
+            while(left<right){
+                if((nums[left]+nums[right]) < target){
+                    left++;
+                }
+                else if((nums[left]+nums[right]) > target){
+                    right--;
+                }
+                else{
+                   vector<int> tri = {nums[i], nums[left],nums[right]};
+                   ans.push_back(tri);
+                   while(left < right && nums[left]== tri[1]) left++;
+                   while(left<right && nums[right] == tri[2]) right--;
+                }
+            }
+             while (i + 1 < nums.size() && nums[i + 1] == nums[i]) 
+            i++;
+            
+        }
+        return ans;
+    }
+};
