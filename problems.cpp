@@ -981,3 +981,22 @@ public:
         return ans;
     }
 };
+
+//TLE
+//https://leetcode.com/problems/container-with-most-water/
+
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int maximum, minimum, area;
+        for (int i = 0; i < height.size() - 1; i++) {
+            area = 0;
+            for (int j = i + 1; j < height.size(); j++) {
+                minimum = std::min(height[i], height[j]);
+                area = minimum * (j - i);
+                maximum = max(maximum,area);
+            }
+        }
+        return maximum;
+    }
+};
