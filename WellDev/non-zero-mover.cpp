@@ -25,6 +25,6 @@ int main(){
     nonZeroMover(arr, n);
 
     for(auto i:arr){
-        cout << i << " ";
+        cout << i << " ";s
     }
 }
