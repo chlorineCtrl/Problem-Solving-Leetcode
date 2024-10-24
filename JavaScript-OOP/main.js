@@ -12,5 +12,16 @@ Person.prototype.calcAge = function () {
   console.log(2024 - this.birthYear);
 };
 
-mama.calcAge();
-nuke.calcAge();
+// mama.calcAge();
+// nuke.calcAge();
+
+Person.prototype.newTrait = "deaf";
+// console.dir(Person.prototype.constructor);
+
+const arr = [1, 23, 4, 5, 1, 5];
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
